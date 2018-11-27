@@ -16,7 +16,7 @@ component {
 
 		var translatedLayouts = [];
 		for( var layout in rawlayouts ) {
-			var specificLabelUri = "page-layouts:layout.#layout#";
+			var specificLabelUri = "page-layouts:#layout#";
 
 			translatedLayouts.append( {
 				  value    = layout
