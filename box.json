@@ -19,8 +19,8 @@
         ".twgit_features_subject",
         ".travis.yml",
         "jmimemagic.log",
-	"test.sh",
-	"tests"
+        "test.sh",
+        "tests"
     ],
     "devDependencies":{
         "testbox":"2.2.0"
