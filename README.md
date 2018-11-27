@@ -101,3 +101,7 @@ renderPageLayout( body=myBodyContent, layout="nameofLayout" );
 ```
 
 Use this method to wrap your custom pages in re-usable layouts.
+
+# Contributing
+
+Contribution in all forms is very welcome. Use Github to create pull requests for tests, logic, features and documentation. Or, get in touch over at Preside's slack team and we'll be happy to help and chat: [https://presidecms-slack.herokuapp.com/](https://presidecms-slack.herokuapp.com/).
