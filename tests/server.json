@@ -1,0 +1,11 @@
+{
+    "name":"pltests",
+    "openbrowser":false,
+    "trayEnable":false,
+    "web":{
+        "webroot":"/",
+        "http":{
+            "port":"9618"
+        }
+    }
+}

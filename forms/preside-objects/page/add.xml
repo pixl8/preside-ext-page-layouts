@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<tab id="main">
+		<fieldset id="main">
+			<field sortorder="55" binding="page.page_layout" control="newPageLayoutPicker" />
+		</fieldset>
+	</tab>
+</form>
