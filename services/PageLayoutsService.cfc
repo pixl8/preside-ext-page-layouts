@@ -41,10 +41,14 @@ component {
 			return fromPageDbEntry;
 		}
 
-		return validLayouts[ 1 ];
+		return validLayouts[ 1 ] ?: "";
 	}
 
 	public array function getLayoutsForSitetreePageType( required string pageType ) {
+		if ( !Len( Trim( pageType ) ) || !$getPresideObjectService().objectExists( arguments.pageType ) ) {
+			return [];
+		}
+
 		var fromObjDefinition = $getPresideObjectService().getObjectAttribute(
 			  objectName    = arguments.pageType
 			, attributeName = "pageLayouts"
