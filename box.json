@@ -1,7 +1,7 @@
 {
     "name":"Preside Extension: Page layouts",
-    "version":"0.9.4",
-    "location":"https://github.com/pixl8/preside-ext-page-layouts/archive/v0.9.4.zip",
+    "version":"0.9.5",
+    "location":"https://github.com/pixl8/preside-ext-page-layouts/archive/v0.9.5.zip",
     "author":"Pixl8 Interactive",
     "directory":"application/extensions",
     "homepage":"",
@@ -26,7 +26,7 @@
         "testbox":"2.2.0"
     },
     "installPaths":{
-        "testbox":"tests/testbox"
+        "testbox":"tests/testbox/"
     },
     "testbox":{
         "runner":"http://127.0.0.1:9618/runtests.cfm"

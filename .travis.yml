@@ -10,8 +10,7 @@ install:
 - unzip /tmp/box.zip -d /tmp/bin
 script:
 - box install
-- ./test.sh
-- ./publish.sh
+- ./test.sh && ./publish.sh
 
 notifications:
   email: false
