@@ -69,28 +69,34 @@ component extends="testbox.system.BaseSpec" {
 
 		describe( "getLayoutsForSitetreePageType", function(){
 			it( "should return an array of possible site templates when page type cfc defines them in annotation", function(){
-				var svc = _getService();
+				var svc       = _getService();
 				var templates = [ CreateUUId(), CreateUUId(), CreateUUId() ];
-				var pageType = "some_type";
+				var pageType  = "some_type";
 
+				mockPresideObjectService.$( "objectExists" ).$args(
+					  objectName    = pageType
+				).$results( true );
 				mockPresideObjectService.$( "getObjectAttribute" ).$args(
 					  objectName    = pageType
 					, attributeName = "pageLayouts"
-				).$results( templates.toList() )
+				).$results( templates.toList() );
 
 				expect( svc.getLayoutsForSitetreePageType( pageType ) ).toBe( templates );
 			} );
 
 			it( "should return default site tree page layout when no page templates defined on the object", function(){
-				var defaultLayout = CreateUUId();
+				var defaultLayout             = CreateUUId();
 				var defaultSiteTreePageLayout = CreateUUId();
-				var svc = _getService( defaultLayout, defaultSiteTreePageLayout );
-				var pageType = "some_type";
+				var svc                       = _getService( defaultLayout, defaultSiteTreePageLayout );
+				var pageType                  = "some_type";
 
+				mockPresideObjectService.$( "objectExists" ).$args(
+					  objectName    = pageType
+				).$results( true );
 				mockPresideObjectService.$( "getObjectAttribute" ).$args(
 					  objectName    = pageType
 					, attributeName = "pageLayouts"
-				).$results( "" )
+				).$results( "" );
 
 				expect( svc.getLayoutsForSitetreePageType( pageType ) ).toBe( [ defaultSiteTreePageLayout ] );
 			} );
