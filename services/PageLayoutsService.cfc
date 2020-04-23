@@ -7,11 +7,12 @@ component {
 // CONSTRUCTOR
 	/**
 	 * @pageLayoutConfiguration.inject coldbox:setting:pagelayouts
-	 *
+	 * @delayedViewletRendererService.inject DelayedViewletRendererService
 	 */
-	public any function init( required struct pageLayoutConfiguration ) {
+	public any function init( required struct pageLayoutConfiguration, required any delayedViewletRendererService ) {
 		_setDefaultPageLayout( arguments.pageLayoutConfiguration.defaultPageLayout ?: "" );
 		_setDefaultSiteTreePageLayout( Len( Trim( arguments.pageLayoutConfiguration.defaultSiteTreePageLayout ?: "" ) ) ? arguments.pageLayoutConfiguration.defaultSiteTreePageLayout : _getDefaultPageLayout() );
+		_setDelayedViewletRendererService( arguments.delayedViewletRendererService );
 
 		return this;
 	}
@@ -24,7 +25,7 @@ component {
 		if ( Len( Trim( arguments.layout ) ) ) {
 			return $renderViewlet(
 				  event = "layout.page.#arguments.layout#"
-				, args  = { body=arguments.body }
+				, args  = { body=_getDelayedViewletRendererService().renderDelayedViewlets( arguments.body ) }
 			);
 		}
 
@@ -107,6 +108,14 @@ component {
 	}
 	private void function _setDefaultSiteTreePageLayout( required any defaultSiteTreePageLayout ) {
 		_defaultSiteTreePageLayout = arguments.defaultSiteTreePageLayout;
+	}
+
+	private any function _getDelayedViewletRendererService(){
+		return variables._delayedViewletRendererService;
+	}
+
+	private void function _setDelayedViewletRendererService( required any delayedViewletRendererService ){
+		variables._delayedViewletRendererService = arguments.delayedViewletRendererService;
 	}
 
 }
