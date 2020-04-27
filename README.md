@@ -102,6 +102,31 @@ renderPageLayout( body=myBodyContent, layout="nameofLayout" );
 
 Use this method to wrap your custom pages in re-usable layouts.
 
+You can also use the pageLayout view by setting the 2 variables `prc.pageLayoutBody` and `prc.pageLayout` and set your view to `general/_pageLayout` to render the view using Page Layout
+
+```cfc
+	function detail(event, rc, prc){
+
+		...
+
+		prc.pageLayoutBody = renderView( view="page-types/event/detail/", args=args );
+
+		prc.pageLayout = "eventLayout"
+
+		event.setView( view="/general/_pageLayout" );
+
+	}
+```
+
+The `_pageLayout` view consists of a simple wrapper as below
+
+```cfc
+<cfoutput>
+	#renderPageLayout( body=prc.pageLayoutBody ?: '' , layout=prc.pageLayout ?: '' )#
+</cfoutput>
+```
+
+
 # Contributing
 
 Contribution in all forms is very welcome. Use Github to create pull requests for tests, logic, features and documentation. Or, get in touch over at Preside's slack team and we'll be happy to help and chat: [https://presidecms-slack.herokuapp.com/](https://presidecms-slack.herokuapp.com/).
